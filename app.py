@@ -58,9 +58,10 @@ def image_processing(img):
     image = Image.open(img)
     image = image.resize((30,30))
     data.append(np.array(image))
-    X_test=np.array(data)
-    Y_pred = model.predict_classes(X_test)
-    return Y_pred
+    x_test = np.array(data)
+    predict_x = model.predict(x_test)
+    y_predict = np.argmax(predict_x, axis=1)
+    return y_predict
 
 @app.route('/')
 def index():
